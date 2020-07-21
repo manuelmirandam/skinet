@@ -14,10 +14,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<CustomerBasket>> GetBasketByIdAsync(string basketId) 
+        public async Task<ActionResult<CustomerBasket>> GetBasketByIdAsync(string id) 
         {
-            var basket = await _basketRepository.GetBasketAsync(basketId);
-            return Ok(basket ?? new CustomerBasket(basketId));
+            var basket = await _basketRepository.GetBasketAsync(id);
+            return Ok(basket ?? new CustomerBasket(id));
         }
 
         [HttpPost]
@@ -28,9 +28,9 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task DeleteBasketAsync(string basketId) 
+        public async Task DeleteBasketAsync(string id) 
         {
-            await _basketRepository.DeleteBasketAsync(basketId);
+            await _basketRepository.DeleteBasketAsync(id);
         }
     }
 }
