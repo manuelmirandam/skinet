@@ -80,7 +80,6 @@ export class ShopService {
 
     getBrands() {
         if (this.brands.length > 0) {
-            console.log('response from cached brands');
             return of(this.brands);
         }
         return this.http.get<IBrand[]>(this.baseUrl + 'products/brands').pipe(
@@ -93,7 +92,6 @@ export class ShopService {
 
     getTypes() {
         if (this.types.length > 0) {
-            console.log('response from cached types');
             return of(this.types);
         }
         return this.http.get<IType[]>(this.baseUrl + 'products/types').pipe(
