@@ -32,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Cached(600)]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery]ProductSpecParams productParams) 
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
@@ -46,6 +47,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Cached(600)]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id) 
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
@@ -57,6 +59,7 @@ namespace API.Controllers
         }
 
         [HttpGet("brands")]
+        [Cached(600)]
         public async Task<ActionResult<List<ProductBrand>>> GetProductBrands() 
         {
             return Ok(await _productBrandRepository.ListAllAsync());
@@ -64,6 +67,7 @@ namespace API.Controllers
 
         
         [HttpGet("types")]
+        [Cached(600)]
         public async Task<ActionResult<List<ProductType>>> GetProductTypes() 
         {
             return Ok(await _productTypeRepository.ListAllAsync());

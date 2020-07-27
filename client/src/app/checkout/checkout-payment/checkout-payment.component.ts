@@ -4,9 +4,7 @@ import { BasketService } from '../../basket/basket.service';
 import { CheckoutService } from '../checkout.service';
 import { ToastrService } from 'ngx-toastr';
 import { IBasket } from 'src/app/shared/models/basket';
-import { IOrder } from 'src/app/shared/models/order';
 import { Router, NavigationExtras } from '@angular/router';
-import { element } from 'protractor';
 
 declare var Stripe;
 
@@ -62,7 +60,6 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     }
 
     onChange(event) {
-        console.log(event);
         if (event.error) {
             this.cardErrors = event.error.message;
         } else {
